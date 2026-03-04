@@ -4,7 +4,10 @@ from pydantic import BaseModel, Field
 
 TEST_FILE = str(Path(__file__).parent / "tests.jsonl")
 
-
+#Pydantic way to describe a json schema with a python object having python object be a subclass of BaseModel
+#BaseModel is a class that provides a way to validate and parse json data into a python object
+#Field is a class that provides a way to describe a field in the json schema
+#description is a string that provides a description of the field
 class TestQuestion(BaseModel):
     """A test question with expected keywords and reference answer."""
 

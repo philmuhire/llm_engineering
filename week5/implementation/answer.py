@@ -50,8 +50,9 @@ def answer_question(question: str, history: list[dict] = []) -> tuple[str, list[
     """
     Answer the given question with RAG; return the answer and the context documents.
     """
+    #don't fetch context based on the last question, fetch context based on the combined question(current question + previous questions)
     combined = combined_question(question, history)
-    docs = fetch_context(combined)
+    docs = fetch_context(combined) 
     context = "\n\n".join(doc.page_content for doc in docs)
     system_prompt = SYSTEM_PROMPT.format(context=context)
     messages = [SystemMessage(content=system_prompt)]
